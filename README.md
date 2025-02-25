@@ -26,7 +26,6 @@ If you would like to install manually, you can follow these steps:
 <br/>
 
 ## License
-### The Licensing of this library has changed from MIT, to LGPL 2.1+ as of Version 2.0.0
 This library is licensed under the **GNU Lesser General Public License v2.1 or later (LGPL 2.1+).**  
 
 This means you are free to use, modify, and distribute this library under the terms of the LGPL 2.1+.  
