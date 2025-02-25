@@ -27,7 +27,7 @@
   Date: 2025
 
   Original notice in wiring.c
-  
+
   wiring.c - Partial implementation of the Wiring API for the ATmega8.
   Part of Arduino - http://www.arduino.cc/
 
@@ -93,18 +93,19 @@ extern "C" void custom_timer0_ovf_isr()
 
 unsigned long long extendedMillis()
 {
-	unsigned long m;
+    unsigned long m;
     unsigned long e;
-	uint8_t oldSREG = SREG;
+    uint8_t oldSREG = SREG;
 
-	// disable interrupts while we read timer0_millis or we might get an
-	// inconsistent value (e.g. in the middle of a write to timer0_millis)
-	cli();
-	m = timer0_millis;
+    // disable interrupts while we read timer0_millis or we might get an
+    // inconsistent value (e.g. in the middle of a write to timer0_millis)
+    cli();
+    m = timer0_millis;
     e = epoch;
-	SREG = oldSREG;
-    unsigned long long epochMilliseconds = (unsigned long long)e * ((1ULL << 32) *(clockCyclesToMicroseconds(256*64)))/1000;
-    return (m+epochMilliseconds);
+    SREG = oldSREG;
+    unsigned long long epochMilliseconds =
+        (unsigned long long)e * ((1ULL << 32) * (clockCyclesToMicroseconds(256 * 64))) / 1000;
+    return (m + epochMilliseconds);
 }
 
 unsigned long long extendedMicros()
@@ -133,6 +134,6 @@ unsigned long long extendedMicros()
 
     SREG = oldSREG;
     unsigned long microseconds = ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
-    unsigned long long epochMicroseconds = (unsigned long long)e * ((1ULL << 32) * clockCyclesToMicroseconds(256*64));
+    unsigned long long epochMicroseconds = (unsigned long long)e * ((1ULL << 32) * clockCyclesToMicroseconds(256 * 64));
     return (epochMicroseconds + microseconds);
 }
