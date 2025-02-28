@@ -8,14 +8,14 @@ int LED = LED_BUILTIN;
 unsigned long long now;
 void setup() {
   pinMode(LED, OUTPUT);
-  now = extendedMicros();
+  now = extendedMillis();
 }
 
 void loop() {
-  if (extendedMicros() - now > 1000)
+  if (extendedMillis() - now > 1000)
   {
     digitalWrite(LED, !digitalRead(LED));
-    now = extendedMicros();
+    now = extendedMillis();
   }
 
 }
