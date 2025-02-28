@@ -12,7 +12,7 @@ void setup() {
 }
 
 void loop() {
-  if (extendedMicros() - now > 1000000)
+  if (extendedMicros() - now > 1000)
   {
     digitalWrite(LED, !digitalRead(LED));
     now = extendedMicros();
