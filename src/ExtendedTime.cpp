@@ -110,7 +110,7 @@ unsigned long long extendedMillis()
 
 unsigned long long extendedMicros()
 {
-    unsigned long m;
+    unsigned long long m;
     unsigned long e;
     uint8_t oldSREG = SREG, t;
     cli();
@@ -133,7 +133,7 @@ unsigned long long extendedMicros()
 #endif
 
     SREG = oldSREG;
-    unsigned long microseconds = ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
+    unsigned long long microseconds = ((m << 8) + t) * (64 / clockCyclesPerMicrosecond());
     unsigned long long epochMicroseconds = (unsigned long long)e * ((1ULL << 32) * clockCyclesToMicroseconds(256 * 64));
     return (epochMicroseconds + microseconds);
 }
